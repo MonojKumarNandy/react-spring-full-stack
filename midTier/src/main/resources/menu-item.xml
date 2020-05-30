@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="menuItemList1" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="menuItem1" />
+				<ref bean="menuItem2" />
+				<ref bean="menuItem3" />
+				<ref bean="menuItem4" />
+				<ref bean="menuItem5" />
+				<ref bean="menuItem6" />
+				<ref bean="menuItem7" />
+				<ref bean="menuItem8" />
+				<ref bean="menuItem9" />
+				<ref bean="menuItem10" />
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="menuItem1" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="1" />
+		<property name="name" value="Sandwitch" />
+		<property name="price" value="99" />
+		<property name="active" value="true" />
+		<property name="category" value="Main Course" />
+		<property name="dateOfLaunch" value="2017/03/15" />
+		<property name="freeDelivery" value="true" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+	</bean>
+	<bean id="menuItem2" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="2" />
+		<property name="name" value="Burger" />
+		<property name="price" value="139" />
+		<property name="active" value="true" />
+		<property name="category" value="Starter" />
+		<property name="dateOfLaunch" value="2017/12/23" />
+		<property name="freeDelivery" value="false" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=752&amp;q=80" />
+	</bean>
+	<bean id="menuItem3" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="3" />
+		<property name="name" value="Browine" />
+		<property name="price" value="120" />
+		<property name="active" value="false" />
+		<property name="category" value="Starter" />
+		<property name="dateOfLaunch" value="2017/09/31" />
+		<property name="freeDelivery" value="false" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1461009312844-e80697a81cc7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+	</bean>
+	<bean id="menuItem4" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="4" />
+		<property name="name" value="French Fries" />
+		<property name="price" value="102" />
+		<property name="active" value="true" />
+		<property name="category" value="Desert" />
+		<property name="dateOfLaunch" value="2022/06/15" />
+		<property name="freeDelivery" value="true" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1575464362889-408fe193b18f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+	</bean>
+	<bean id="menuItem5" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="5" />
+		<property name="name" value="Pizza" />
+		<property name="price" value="160" />
+		<property name="active" value="true" />
+		<property name="category" value="Main Course" />
+		<property name="dateOfLaunch" value="2017/04/08" />
+		<property name="freeDelivery" value="true" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+	</bean>
+		<bean id="menuItem6" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="6" />
+		<property name="name" value="Oreo Shake" />
+		<property name="price" value="99" />
+		<property name="active" value="true" />
+		<property name="category" value="Drink" />
+		<property name="dateOfLaunch" value="2017/03/15" />
+		<property name="freeDelivery" value="true" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+	</bean>
+	<bean id="menuItem7" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="7" />
+		<property name="name" value="Juice" />
+		<property name="price" value="139" />
+		<property name="active" value="true" />
+		<property name="category" value="Drink" />
+		<property name="dateOfLaunch" value="2017/12/23" />
+		<property name="freeDelivery" value="true" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1546173159-315724a31696?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+	</bean>
+	<bean id="menuItem8" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="8" />
+		<property name="name" value="Browine" />
+		<property name="price" value="120" />
+		<property name="active" value="false" />
+		<property name="category" value="Desert" />
+		<property name="dateOfLaunch" value="2017/09/31" />
+		<property name="freeDelivery" value="false" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+	</bean>
+	<bean id="menuItem9" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="9" />
+		<property name="name" value="Sweet" />
+		<property name="price" value="102" />
+		<property name="active" value="true" />
+		<property name="category" value="Desert" />
+		<property name="dateOfLaunch" value="2022/06/15" />
+		<property name="freeDelivery" value="true" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1489069313310-63735a4f3010?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+	</bean>
+	<bean id="menuItem10" class="com.demo.shopping.model.MenuItem">
+		<property name="id" value="10" />
+		<property name="name" value="Salad" />
+		<property name="price" value="160" />
+		<property name="active" value="true" />
+		<property name="category" value="Starter" />
+		<property name="dateOfLaunch" value="2017/04/08" />
+		<property name="freeDelivery" value="true" />
+		<property name="imgSrc"
+			value="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+	</bean>
+		
+</beans>
