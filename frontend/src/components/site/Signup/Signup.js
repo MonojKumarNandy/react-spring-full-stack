@@ -50,10 +50,6 @@ const validate = values => {
 
 const Signup = () => {
 
-  useEffect(() => {
-    if (sessionStorage.getItem("cart") !== null)
-      sessionStorage.removeItem("cart")
-  })
 
   const formik = useFormik({
     initialValues: {

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Login.css';
 import { Link, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import AuthenticationService from '../AuthenticationService';
+import { LoginContext } from '../../../App';
 
 const validate = values => {
   const errors = {};
@@ -20,10 +21,19 @@ const validate = values => {
 
 const Login = (() => {
 
+
+
+  const loginContext = useContext(LoginContext)
+
   useEffect(() => {
     console.log("useeffect login")
     if (sessionStorage.getItem("username"))
       history.push("/menu")
+
+    return () => {
+      if (sessionStorage.getItem("cart") === "addCart")
+        sessionStorage.removeItem("cart")
+    }
   }, [])
 
   let history = useHistory();
@@ -37,6 +47,9 @@ const Login = (() => {
     onSubmit: values => {
       if (sessionStorage.getItem("cart") !== null)
         sessionStorage.removeItem("cart")
+
+
+
       setLoading(true)
       setServerError(false)
       setIvalid(false)
@@ -44,6 +57,8 @@ const Login = (() => {
         response => {
           //alert(response.data)
           console.log(response)
+
+          loginContext.loginDispatch(response.data.role)
           setLoading(false)
           setIvalid(false)
           setServerError(false)

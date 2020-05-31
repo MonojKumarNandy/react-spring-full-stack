@@ -14,8 +14,6 @@ class Menu extends Component {
     }
   }
   componentDidMount() {
-    if (sessionStorage.getItem("cart") !== null)
-      sessionStorage.removeItem("cart")
 
     const options = { headers: { authorization: sessionStorage.getItem("token") } }
 

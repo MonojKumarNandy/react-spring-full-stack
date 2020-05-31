@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Header.css';
 import { Link, useHistory } from "react-router-dom";
+import { LoginContext } from '../../../App';
 
 
 
@@ -8,10 +9,11 @@ import { Link, useHistory } from "react-router-dom";
 const Header = (() => {
   let history = useHistory();
 
-  let [loggedIn, setLoggedIn] = useState(false)//(sessionStorage.getItem("username") !== null ? true : false)
-  let [isAdmin, setIsadmin] = useState(false)//(sessionStorage.getItem("role") === "ROLE_ADMIN" ? true : false)
-
-
+  // let [loggedIn, setLoggedIn] = useState(false)//(sessionStorage.getItem("username") !== null ? true : false)
+  // let [isAdmin, setIsadmin] = useState(false)//(sessionStorage.getItem("role") === "ROLE_ADMIN" ? true : false)
+  const loginContext = useContext(LoginContext)
+  let loggedIn = loginContext.loginState === null ? false : true
+  let isAdmin = loginContext.loginState === "ROLE_ADMIN" ? true : false
   const onSignOut = () => {
     console.log("Logout")
 
@@ -19,18 +21,14 @@ const Header = (() => {
     sessionStorage.removeItem("role");
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("cart");
+    loginContext.loginDispatch('no')
+    //setLoggedIn(false)
+    //setIsadmin(false)
     history.push("/login")
 
-    setLoggedIn(false)
-    setIsadmin(false)
+
 
   }
-
-
-  useState(() => {
-    setLoggedIn(sessionStorage.getItem("username") !== null ? true : false)
-    setIsadmin(sessionStorage.getItem("role") === "ROLE_ADMIN" ? true : false)
-  })
 
 
 
@@ -41,6 +39,7 @@ const Header = (() => {
 
 
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+
       <Link className=" navbar-brand">
         <i className="material-icons">
           local_dining
