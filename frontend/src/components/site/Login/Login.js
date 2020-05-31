@@ -20,11 +20,11 @@ const validate = values => {
 
 const Login = (() => {
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("useeffect login")
-    if(sessionStorage.getItem("username"))
-    history.push("/menu")
-  },[])
+    if (sessionStorage.getItem("username"))
+      history.push("/menu")
+  }, [])
 
   let history = useHistory();
 
@@ -35,6 +35,8 @@ const Login = (() => {
     },
     validate,
     onSubmit: values => {
+      if (sessionStorage.getItem("cart") !== null)
+        sessionStorage.removeItem("cart")
       setLoading(true)
       setServerError(false)
       setIvalid(false)
@@ -68,7 +70,7 @@ const Login = (() => {
   let [invalid, setIvalid] = useState(false)
   let [serverError, setServerError] = useState(false)
   let [loading, setLoading] = useState(false);
-  
+
   return (
     <div className="container mt-5">
 
@@ -88,7 +90,7 @@ const Login = (() => {
                 <div className="spinner-border"><span className="sr-only"> Loading....</span>
                   </div>
                 </div>}
-                <div className="alert alert-danger" >Please Login  befor adding item to cart. </div>
+                {sessionStorage.getItem("cart") === "addCart" && <div className="alert alert-danger" >Please Login  befor adding item to cart </div>}
                 <div className="form-group">
                   <label htmlFor="username">Username</label>
                   <input type="text" className="form-control" id="username" placeholder="Enter Username" name="username" onChange={formik.handleChange} value={formik.values.username} />

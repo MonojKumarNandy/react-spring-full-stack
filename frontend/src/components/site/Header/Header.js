@@ -18,6 +18,7 @@ const Header = (() => {
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("role");
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("cart");
     history.push("/login")
 
     setLoggedIn(false)

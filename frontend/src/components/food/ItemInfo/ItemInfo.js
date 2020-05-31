@@ -15,34 +15,40 @@ const ItemInfo = (({ Food }) => {
         history.push(`/menu-item/${id}`)
     }
 
-let [addedToCart , setAddedToCart]=useState(false)
-let [notProcess , setNotProcess]=useState(false)
+    let [addedToCart, setAddedToCart] = useState(false)
+    let [notProcess, setNotProcess] = useState(false)
 
-function addToCart(id){
-let username=sessionStorage.getItem("username")
-const options = { headers: { authorization: sessionStorage.getItem("token") } }
+    function addToCart(id) {
+        let username = sessionStorage.getItem("username")
+        if (username === null) {
+            sessionStorage.setItem("cart", "addCart")
+            history.push("/login")
+        } else {
+            const options = { headers: { authorization: sessionStorage.getItem("token") } }
 
-axios.post("http://localhost:8086/carts/"+username+"/"+id,null,options).then(
-  response => {
-      setAddedToCart(true)
-    setTimeout(() => {
-        setAddedToCart(false)
-      }, 3000);
-    
-    console.log(response)
-  }
+            axios.post("http://localhost:8086/carts/" + username + "/" + id, null, options).then(
+                response => {
+                    setAddedToCart(true)
+                    setTimeout(() => {
+                        setAddedToCart(false)
+                    }, 3000);
 
-).catch(
-  err => {console.log(err)
-    setNotProcess(true)
-    setTimeout(() => {
-        setNotProcess(false)
-      }, 3000);
+                    console.log(response)
+                }
 
-}
-)
+            ).catch(
+                err => {
+                    console.log(err)
+                    setNotProcess(true)
+                    setTimeout(() => {
+                        setNotProcess(false)
+                    }, 3000);
 
-}
+                }
+            )
+        }
+
+    }
 
     let [isAdmin, setIsadmin] = useState(false)
     useEffect(() => {
@@ -81,7 +87,7 @@ axios.post("http://localhost:8086/carts/"+username+"/"+id,null,options).then(
                 </i>}
                     </div>
                 </div>
-               {addedToCart && <div className="row">
+                {addedToCart && <div className="row">
                     <div className="col-12 mt-2">
 
 
@@ -141,7 +147,7 @@ axios.post("http://localhost:8086/carts/"+username+"/"+id,null,options).then(
 
 
                         {!isAdmin && <div className="col text-right">
-                            <button className=" btn btn-danger" onClick={()=>addToCart(Food.id)}><i className="material-icons">
+                            <button className=" btn btn-danger" onClick={() => addToCart(Food.id)}><i className="material-icons">
                                 shopping_cart
                             </i>Add to Cart</button>
                         </div>}

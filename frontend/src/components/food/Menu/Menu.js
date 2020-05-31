@@ -14,10 +14,12 @@ class Menu extends Component {
     }
   }
   componentDidMount() {
+    if (sessionStorage.getItem("cart") !== null)
+      sessionStorage.removeItem("cart")
 
     const options = { headers: { authorization: sessionStorage.getItem("token") } }
 
-    axios.get("http://localhost:8086/menu-items",options).then(
+    axios.get("http://localhost:8086/menu-items", options).then(
       response => {
         this.setState({ foods: response.data })
         console.log(response)
@@ -36,9 +38,9 @@ class Menu extends Component {
         <div className="row mt-5">
           {this.state.foods.map(
             food =>
-            <div className="col-12 col-md-6 col-lg-4" key={food.id}>
-              <ItemInfo Food={food} />
-            </div>
+              <div className="col-12 col-md-6 col-lg-4" key={food.id}>
+                <ItemInfo Food={food} />
+              </div>
           )
           }
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './Signup.css';
 import { Link } from 'react-router-dom';
@@ -41,7 +41,7 @@ const validate = values => {
   if (!values.cnfpassword) {
     errors.cnfpassword = 'Required';
   }
-  else if (values.cnfpassword!==values.password) {
+  else if (values.cnfpassword !== values.password) {
     errors.cnfpassword = 'Password and Confirm Password must be Same';
   }
 
@@ -49,6 +49,11 @@ const validate = values => {
 };
 
 const Signup = () => {
+
+  useEffect(() => {
+    if (sessionStorage.getItem("cart") !== null)
+      sessionStorage.removeItem("cart")
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -85,7 +90,7 @@ const Signup = () => {
           console.log(err.message)
           if (err.message === 'Request failed with status code 400')
             setuserExists(true)
-            else if (err.message === "Network Error")
+          else if (err.message === "Network Error")
             setServerError(true)
         }
       )
@@ -113,7 +118,7 @@ const Signup = () => {
                 </div>
               </div>}
 
-  
+
 
               <div className="form-group">
                 <label htmlFor="username"> Username/Email</label>
